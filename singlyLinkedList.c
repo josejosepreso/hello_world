@@ -1,7 +1,18 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <stddef.h>
 #include "singlyLinkedList.h"
 #include "node.h"
+
+SinglyLinkedList *newList()
+{
+  SinglyLinkedList *list = malloc(sizeof(SinglyLinkedList *));
+  
+  list->head = NULL;
+  list->size = 0;
+
+  return list;
+}
 
 int isEmpty(SinglyLinkedList *list)
 {
@@ -66,11 +77,11 @@ int addAt(SinglyLinkedList *list, Node *node, int index)
   return 1;
 }
 
-struct Node *getFirst(SinglyLinkedList *list) {
+Node *getFirst(SinglyLinkedList *list) {
   return list->head;
 }
 
-struct Node *getAt(SinglyLinkedList *list, int index)
+Node *getAt(SinglyLinkedList *list, int index)
 {
   if(isEmpty(list) || index >= list->size)
     return NULL;
@@ -84,8 +95,6 @@ struct Node *getAt(SinglyLinkedList *list, int index)
     current = current->next;
 
   return current;
-  
-  return 0;
 }
 
 void print(SinglyLinkedList *list)

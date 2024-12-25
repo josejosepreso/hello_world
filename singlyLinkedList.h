@@ -9,6 +9,8 @@ typedef struct SinglyLinkedList {
   int size;
 } SinglyLinkedList;
 
+SinglyLinkedList *newList();
+
 int isEmpty(SinglyLinkedList*);
 
 int addFirst(SinglyLinkedList*, Node*);
