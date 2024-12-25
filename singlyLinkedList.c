@@ -16,10 +16,7 @@ SinglyLinkedList *newList()
 
 int isEmpty(SinglyLinkedList *list)
 {
-  if(list->head == NULL)
-    return 1;
-
-  return 0;
+  return list->head == NULL ? 1 : 0;
 }
 
 int addFirst(SinglyLinkedList *list, Node *node)
