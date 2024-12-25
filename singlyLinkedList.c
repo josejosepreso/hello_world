@@ -3,7 +3,7 @@
 #include "singlyLinkedList.h"
 #include "node.h"
 
-int isEmpty(struct SinglyLinkedList *list)
+int isEmpty(SinglyLinkedList *list)
 {
   if(list->head == NULL)
     return 1;
@@ -11,7 +11,7 @@ int isEmpty(struct SinglyLinkedList *list)
   return 0;
 }
 
-int addFirst(struct SinglyLinkedList *list, struct Node *node)
+int addFirst(SinglyLinkedList *list, Node *node)
 {
   list->size++;
   
@@ -28,18 +28,15 @@ int addFirst(struct SinglyLinkedList *list, struct Node *node)
   return 1;
 }
 
-int addLast(struct SinglyLinkedList *list, struct Node *node)
+int addLast(SinglyLinkedList *list, Node *node)
 {
-  if(isEmpty(list)) {
+  if(isEmpty(list))
     return addFirst(list, node);
-  }
   
   struct Node *current = list->head;
 
-  while(current->next != NULL) {
-
+  while(current->next != NULL)
     current = current->next;
-  }
 
   current->next = node;
 
@@ -48,7 +45,7 @@ int addLast(struct SinglyLinkedList *list, struct Node *node)
   return 1;
 }
 
-int addAt(struct SinglyLinkedList *list, struct Node *node, int index)
+int addAt(SinglyLinkedList *list, Node *node, int index)
 {
   if(index == 0)
     return addFirst(list, node);
@@ -58,9 +55,8 @@ int addAt(struct SinglyLinkedList *list, struct Node *node, int index)
 
   struct Node *current = list->head;
 
-  for(int i = 0; i < index - 1; i++) {
+  for(int i = 0; i < index - 1; i++)
     current = current->next;
-  }
 
   struct Node *next = current->next;
 
@@ -70,11 +66,11 @@ int addAt(struct SinglyLinkedList *list, struct Node *node, int index)
   return 1;
 }
 
-struct Node *getFirst(struct SinglyLinkedList *list) {
+struct Node *getFirst(SinglyLinkedList *list) {
   return list->head;
 }
 
-struct Node *getAt(struct SinglyLinkedList *list, int index)
+struct Node *getAt(SinglyLinkedList *list, int index)
 {
   if(isEmpty(list) || index >= list->size)
     return NULL;
@@ -92,7 +88,7 @@ struct Node *getAt(struct SinglyLinkedList *list, int index)
   return 0;
 }
 
-void print(struct SinglyLinkedList *list)
+void print(SinglyLinkedList *list)
 {
   if(isEmpty(list))
     return;

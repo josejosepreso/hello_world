@@ -6,28 +6,19 @@
 
 int main(void)
 {
-  struct SinglyLinkedList list = { .head = NULL, .size = 0 };
+  SinglyLinkedList list = { .head = NULL, .size = 0 };
 
-  struct Node node1 = { .val = 111, .next = NULL };
-  struct Node node2 = { .val = 222, .next = NULL };
-  struct Node node3 = { .val = 666, .next = NULL };
+  addLast(&list, &(Node){ .val = 111, .next = NULL });
+  addLast(&list, &(Node){ .val = 222, .next = NULL });
+  addLast(&list, &(Node){ .val = 666, .next = NULL });
 
-  addLast(&list, &node1);
-  addLast(&list, &node2);
-  addLast(&list, &node3);
+  addFirst(&list, &(Node){ .val = 4, .next = NULL });
 
-  struct Node node4 = { .val = 4, .next = NULL };
+  addAt(&list, &(Node){ .val = 13, .next = NULL }, 2);
 
-  addFirst(&list, &node4);
-
-  struct Node node5 = { .val = 13, .next = NULL };
-
-  addAt(&list, &node5, 2);
-
-  // Print
   print(&list);
 
-  struct Node *node = getAt(&list, 2);
+  Node *node = getAt(&list, 3);
 
   printf("%d", node->val);
   

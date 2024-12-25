@@ -2,9 +2,9 @@
 
 #define NODE_H
 
-struct Node {
+typedef struct Node {
   int val;
   struct Node *next;
-};
+} Node;
 
 #endif

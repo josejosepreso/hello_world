@@ -1,22 +1,24 @@
+#include "node.h"
+
 #ifndef SINGLYLINKEDLIST_H
 
 #define SINGLYLINKEDLIST_H
 
-struct SinglyLinkedList {
-  struct Node *head;
+typedef struct SinglyLinkedList {
+  Node *head;
   int size;
-};
+} SinglyLinkedList;
 
-int isEmpty(struct SinglyLinkedList*);
+int isEmpty(SinglyLinkedList*);
 
-int addFirst(struct SinglyLinkedList*, struct Node*);
+int addFirst(SinglyLinkedList*, Node*);
 
-int addLast(struct SinglyLinkedList*, struct Node*);
+int addLast(SinglyLinkedList*, Node*);
 
-int addAt(struct SinglyLinkedList*, struct Node*, int);
+int addAt(SinglyLinkedList*, Node*, int);
 
-struct Node *getAt(struct SinglyLinkedList*, int);
+Node *getAt(SinglyLinkedList*, int);
 
-void print(struct SinglyLinkedList*);
+void print(SinglyLinkedList*);
 
 #endif
