@@ -23,6 +23,6 @@ Node *getAt(SinglyLinkedList *, int);
 
 void print(SinglyLinkedList *);
 
-Node *removeAt(SinglyLinkedList *, int);
+void removeAt(SinglyLinkedList *, int);
 
 #endif

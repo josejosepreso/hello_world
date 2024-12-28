@@ -99,10 +99,10 @@ Node *getAt(SinglyLinkedList *list, int index)
   return current;
 }
 
-Node *removeAt(SinglyLinkedList *list, int index)
+void removeAt(SinglyLinkedList *list, int index)
 {
   if(index < 0 || index >= list->size)
-    return NULL;
+    return;
 
   Node *current = getFirst(list), *prev;
 
@@ -117,7 +117,7 @@ Node *removeAt(SinglyLinkedList *list, int index)
 
   list->size--;
 
-  return current;
+  free(current);
 }
 
 void print(SinglyLinkedList *list)
