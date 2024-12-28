@@ -55,6 +55,9 @@ int addLast(SinglyLinkedList *list, Node *node)
 
 int addAt(SinglyLinkedList *list, Node *node, int index)
 {
+  if(index < 0 || index > list->size)
+    return -1;
+
   if(index == 0)
     return addFirst(list, node);
 
@@ -70,6 +73,8 @@ int addAt(SinglyLinkedList *list, Node *node, int index)
 
   current->next = node;
   node->next = next;
+
+  list->size++;
 
   return 1;
 }
@@ -90,6 +95,27 @@ Node *getAt(SinglyLinkedList *list, int index)
   
   for(int i = 0; i < index; i++)
     current = current->next;
+
+  return current;
+}
+
+Node *removeAt(SinglyLinkedList *list, int index)
+{
+  if(index < 0 || index >= list->size)
+    return NULL;
+
+  Node *current = getFirst(list), *prev;
+
+  for(int i = 0; i < index; i++) {
+    prev = current;
+    current = current->next;
+  }
+
+  Node *next = current->next;
+
+  prev->next = next;
+
+  list->size--;
 
   return current;
 }

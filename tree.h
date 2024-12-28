@@ -7,8 +7,8 @@ struct Tree {
   struct TreeNode *root;
 };
 
-void printTreeNodes(struct Tree*, struct TreeNode*);
+void printTreeNodes(struct Tree *, struct TreeNode *);
 
-void printTree(struct Tree*);
+void printTree(struct Tree *);
 
 #endif

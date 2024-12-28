@@ -11,16 +11,18 @@ typedef struct SinglyLinkedList {
 
 SinglyLinkedList *newList();
 
-int isEmpty(SinglyLinkedList*);
+int isEmpty(SinglyLinkedList *);
 
-int addFirst(SinglyLinkedList*, Node*);
+int addFirst(SinglyLinkedList *, Node *);
 
-int addLast(SinglyLinkedList*, Node*);
+int addLast(SinglyLinkedList *, Node *);
 
-int addAt(SinglyLinkedList*, Node*, int);
+int addAt(SinglyLinkedList *, Node *, int);
 
-Node *getAt(SinglyLinkedList*, int);
+Node *getAt(SinglyLinkedList *, int);
 
-void print(SinglyLinkedList*);
+void print(SinglyLinkedList *);
+
+Node *removeAt(SinglyLinkedList *, int);
 
 #endif

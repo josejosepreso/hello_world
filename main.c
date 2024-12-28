@@ -18,7 +18,15 @@ int main(void)
 
   Node *node = getAt(list, 3);
 
-  printf("%d", node->val);
+  printf("%d\n", node->val);
+
+  removeAt(list, 2);
+
+  print(list);
+
+  addAt(list, newNode(-100), 3);
+
+  print(list);
   
   return 0;
 }
