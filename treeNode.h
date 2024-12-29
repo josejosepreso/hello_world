@@ -1,10 +1,13 @@
 #ifndef TREENODE_H
 #define TREENODE_H
 
-struct TreeNode {
-  struct Node *node;
-  struct SinglyLinkedList *children;
+typedef struct TreeNode {
+  int val;
   int depth;
-};
+  struct TreeNode *rightChild;
+  struct TreeNode *leftChild;
+} TreeNode;
+
+TreeNode *newTreeNode();
 
 #endif
