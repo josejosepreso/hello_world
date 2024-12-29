@@ -38,8 +38,6 @@ int addNode(BinaryTree *tree, TreeNode *newNode, TreeNode *current, TreeNode *pa
     return 1;
   }
 
-  newNode->depth++;
-
   if(newNode->val < current->val)
     return addNode(tree, newNode, current->leftChild, current);
 
@@ -49,7 +47,6 @@ int addNode(BinaryTree *tree, TreeNode *newNode, TreeNode *current, TreeNode *pa
 int add(BinaryTree *tree, TreeNode *node)
 {
   if(isTreeEmpty(tree)) {
-    node->depth = 0;
     tree->root = node;
     return 1;
   }
@@ -59,17 +56,19 @@ int add(BinaryTree *tree, TreeNode *node)
   return addNode(tree, node, root, NULL);
 }
 
-void printTreeNodes(BinaryTree *tree, TreeNode *current)
+void printTreeNodes(BinaryTree *tree, TreeNode *current, int depth)
 {
   if(current == NULL)
     return;
 
-  for(int i = 0; i < current->depth; i++)
+  for(int i = 0; i < depth; i++)
     printf("\t");
   printf("%d\n", current->val);
 
-  printTreeNodes(tree, current->rightChild);
-  printTreeNodes(tree, current->leftChild);
+  depth++;
+
+  printTreeNodes(tree, current->rightChild, depth);
+  printTreeNodes(tree, current->leftChild, depth);
 }
 
 void printTree(BinaryTree *tree)
@@ -77,5 +76,5 @@ void printTree(BinaryTree *tree)
   if(isTreeEmpty(tree))
     return;
 
-  printTreeNodes(tree, tree->root);
+  printTreeNodes(tree, tree->root, 0);
 }

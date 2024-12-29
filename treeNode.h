@@ -3,7 +3,6 @@
 
 typedef struct TreeNode {
   int val;
-  int depth;
   struct TreeNode *rightChild;
   struct TreeNode *leftChild;
 } TreeNode;

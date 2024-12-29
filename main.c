@@ -36,6 +36,7 @@ int main(void)
 
   add(tree, newTreeNode(1));
   add(tree, newTreeNode(11));
+  add(tree, newTreeNode(9));
   add(tree, newTreeNode(-2));
   add(tree, newTreeNode(-3));
   add(tree, newTreeNode(-1));
