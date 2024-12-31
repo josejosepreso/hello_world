@@ -4,7 +4,7 @@
 #define BINARYTREE_H
 
 typedef struct BinaryTree {
-  TreeNode *root;
+    TreeNode *root;
 } BinaryTree;
 
 BinaryTree *newTree();
@@ -12,5 +12,7 @@ BinaryTree *newTree();
 int add(BinaryTree *, TreeNode *);
 
 void printTree(BinaryTree *);
+
+void printLevels(BinaryTree *);
 
 #endif

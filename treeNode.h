@@ -2,9 +2,9 @@
 #define TREENODE_H
 
 typedef struct TreeNode {
-  int val;
-  struct TreeNode *rightChild;
-  struct TreeNode *leftChild;
+    int val;
+    struct TreeNode *rightChild;
+    struct TreeNode *leftChild;
 } TreeNode;
 
 TreeNode *newTreeNode();

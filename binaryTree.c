@@ -78,3 +78,53 @@ void printTree(BinaryTree *tree)
 
   printTreeNodes(tree, tree->root, 0);
 }
+
+void amountOfNodes(BinaryTree *tree, TreeNode *current, int *x)
+{
+    if(current == NULL)
+	return;
+
+    *x += 1;
+
+    amountOfNodes(tree, current->leftChild, x);
+    amountOfNodes(tree, current->rightChild, x);
+}
+
+void printLevels(BinaryTree *tree)
+{
+    if(isTreeEmpty(tree))
+	return;
+
+    int number = 0;
+    amountOfNodes(tree, tree->root, &number);
+
+    TreeNode *nodes[number];
+    int front = 0, rear = 0;
+    nodes[rear++] = tree->root;
+
+    int levelSize = rear - front;
+
+    while(levelSize > 0) {
+	TreeNode *current;
+
+	for(int i = 0; i < levelSize; i++) {
+	    current = nodes[front++];
+
+	    printf("%d", current->val);
+
+	    TreeNode *right = current->rightChild;
+	    TreeNode *left = current->leftChild;
+
+	    if(left != NULL)
+		nodes[rear++] = left;
+	    if(right != NULL)
+		nodes[rear++] = right;
+
+	    free(current);
+	}
+
+	levelSize = rear - front;
+
+	printf("\n");
+    }
+}

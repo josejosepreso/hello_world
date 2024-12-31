@@ -5,8 +5,8 @@
 #define SINGLYLINKEDLIST_H
 
 typedef struct SinglyLinkedList {
-  Node *head;
-  int size;
+    Node *head;
+    int size;
 } SinglyLinkedList;
 
 SinglyLinkedList *newList();
@@ -22,6 +22,10 @@ int addAt(SinglyLinkedList *, Node *, int);
 Node *getAt(SinglyLinkedList *, int);
 
 void print(SinglyLinkedList *);
+
+void removeFirst(SinglyLinkedList *);
+
+void removeLast(SinglyLinkedList *);
 
 void removeAt(SinglyLinkedList *, int);
 

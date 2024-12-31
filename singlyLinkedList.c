@@ -6,135 +6,187 @@
 
 SinglyLinkedList *newList()
 {
-  SinglyLinkedList *list = malloc(sizeof(SinglyLinkedList *));
-  
-  list->head = NULL;
-  list->size = 0;
+    SinglyLinkedList *list = malloc(sizeof(SinglyLinkedList *));
+    
+    list->head = NULL;
+    list->size = 0;
 
-  return list;
+    return list;
 }
 
 int isEmpty(SinglyLinkedList *list)
 {
-  return list->head == NULL ? 1 : 0;
+    return list->head == NULL ? 1 : 0;
 }
 
 int addFirst(SinglyLinkedList *list, Node *node)
 {
-  list->size++;
-  
-  if(isEmpty(list)) {
-    list->head = node;
-    return 1;
-  }
-  
-  struct Node *head = list->head;
+    list->size += 1;
+    
+    if(isEmpty(list)) {
+        list->head = node;
+        return 1;
+    }
+    
+    struct Node *head = list->head;
 
-  node->next = head;
-  list->head = node;
-  
-  return 1;
+    node->next = head;
+    list->head = node;
+    
+    return 1;
 }
 
 int addLast(SinglyLinkedList *list, Node *node)
 {
-  if(isEmpty(list))
-    return addFirst(list, node);
-  
-  struct Node *current = list->head;
+    if(isEmpty(list))
+        return addFirst(list, node);
+    
+    struct Node *current = list->head;
 
-  while(current->next != NULL)
-    current = current->next;
+    while(current->next != NULL)
+        current = current->next;
 
-  current->next = node;
+    current->next = node;
 
-  list->size++;
-  
-  return 1;
+    list->size += 1;
+    
+    return 1;
 }
 
 int addAt(SinglyLinkedList *list, Node *node, int index)
 {
-  if(index < 0 || index > list->size)
-    return -1;
+    if(index < 0 || index > list->size)
+        return -1;
 
-  if(index == 0)
-    return addFirst(list, node);
+    if(index == 0)
+        return addFirst(list, node);
 
-  if(index == list->size)
-    return addLast(list, node);
+    if(index == list->size)
+        return addLast(list, node);
 
-  struct Node *current = list->head;
+    struct Node *current = list->head;
 
-  for(int i = 0; i < index - 1; i++)
-    current = current->next;
+    for(int i = 0; i < index - 1; i++)
+        current = current->next;
 
-  struct Node *next = current->next;
+    struct Node *next = current->next;
 
-  current->next = node;
-  node->next = next;
+    current->next = node;
+    node->next = next;
 
-  list->size++;
+    list->size += 1;
 
-  return 1;
+    return 1;
 }
 
 Node *getFirst(SinglyLinkedList *list) {
-  return list->head;
+    return list->head;
 }
 
 Node *getAt(SinglyLinkedList *list, int index)
 {
-  if(isEmpty(list) || index >= list->size)
-    return NULL;
+    if(isEmpty(list) || index >= list->size)
+        return NULL;
 
-  if(index == 0)
-    return getFirst(list);
+    if(index == 0)
+        return getFirst(list);
 
-  struct Node *current = getFirst(list);
-  
-  for(int i = 0; i < index; i++)
-    current = current->next;
+    struct Node *current = getFirst(list);
+    
+    for(int i = 0; i < index; i++)
+        current = current->next;
 
-  return current;
+    return current;
+}
+
+void removeFirst(SinglyLinkedList *list)
+{
+    if(isEmpty(list))
+	return;
+
+    Node *node = getFirst(list);
+
+    list->head = NULL;
+
+    if(list->size > 1)
+	list->head = node->next;
+
+    free(node);
+
+    list->size -= 1;
+}
+
+void removeLast(SinglyLinkedList *list)
+{
+    if(isEmpty(list))
+	return;
+
+    if(list->size == 1) {
+	removeFirst(list);
+	return;
+    }
+
+    Node *current = getFirst(list);
+
+    for(int i = 0; i < list->size - 2; i++)
+	current = current->next;
+
+    Node *node = current->next;
+    free(node);
+
+    current->next = NULL;
+
+    list->size -= 1;
 }
 
 void removeAt(SinglyLinkedList *list, int index)
 {
-  if(index < 0 || index >= list->size)
-    return;
+    if(index < 0 || index >= list->size)
+        return;
 
-  Node *current = getFirst(list), *prev;
+    if(index == 0) {
+	removeFirst(list);
+	return;
+    }
 
-  for(int i = 0; i < index; i++) {
-    prev = current;
-    current = current->next;
-  }
+    if(index == list->size - 1) {
+	removeLast(list);
+	return;
+    }
 
-  Node *next = current->next;
+    Node *current = getFirst(list), *prev;
 
-  prev->next = next;
+    for(int i = 0; i < index; i++) {
+        prev = current;
+        current = current->next;
+    }
 
-  list->size--;
+    Node *next = current->next;
 
-  free(current);
+    prev->next = next;
+
+    list->size -= 1;
+
+    free(current);
 }
 
 void print(SinglyLinkedList *list)
 {
-  if(isEmpty(list))
-    return;
-  
-  struct Node *current = list->head;
-
-  printf("[");
-  while(current != NULL) {
-    printf("%d", current->val);
-
-    if(current->next != NULL)
-      printf(", ");
+    if(isEmpty(list)) {
+	printf("[]\n");
+        return;
+    }
     
-    current = current->next;
-  }
-  printf("]\n");
+    struct Node *current = list->head;
+
+    printf("[");
+    while(current != NULL) {
+        printf("%d", current->val);
+
+        if(current->next != NULL)
+            printf(", ");
+        
+        current = current->next;
+    }
+    printf("]\n");
 }

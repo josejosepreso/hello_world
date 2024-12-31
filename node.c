@@ -3,10 +3,10 @@
 
 Node *newNode(int val)
 {
-  Node *node = malloc(sizeof(Node *));
+    Node *node = malloc(sizeof(Node *));
 
-  node->val = val;
-  node->next = NULL;
+    node->val = val;
+    node->next = NULL;
 
-  return node;
+    return node;
 }
